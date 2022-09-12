@@ -51,11 +51,19 @@ export class DirectorySync {
     user: string,
   ): Promise<UserWithGroups<TCustomAttributes>> {
     const { data } = await this.workos.get(`/directory_users/${user}`);
+    data.primary_email = function () {
+      const primary_email_value = (data.emails || []).find((email: { primary: any; }) => email.primary)
+      return (primary_email_value && primary_email_value)
+    }
     return data;
   }
 
   async getGroup(group: string): Promise<Group> {
     const { data } = await this.workos.get(`/directory_groups/${group}`);
+    data.primary_email = function () {
+      const primary_email_value = (data.emails || []).find((email: { primary: any; }) => email.primary)
+      return (primary_email_value && primary_email_value)
+    }
     return data;
   }
 }

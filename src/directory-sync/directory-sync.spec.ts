@@ -38,6 +38,8 @@ describe('DirectorySync', () => {
     },
   };
 
+  const primary_email = () => {return 'jonsnow@workos.com'}
+
   const userWithGroupResponse: UserWithGroups = {
     id: 'user_123',
     custom_attributes: {
@@ -59,6 +61,7 @@ describe('DirectorySync', () => {
     raw_attributes: {},
     state: 'active',
     username: 'jonsnow',
+    primary_email: primary_email
   };
 
   describe('listDirectories', () => {

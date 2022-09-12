@@ -21,6 +21,7 @@ export interface User<
   username: string;
   last_name: string;
   state: 'active' | 'inactive' | 'suspended';
+  primary_email(): string;
 }
 
 export interface UserWithGroups<
